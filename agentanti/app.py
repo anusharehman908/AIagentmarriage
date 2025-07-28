@@ -1,11 +1,10 @@
-
-   
 import streamlit as st
 import os
 import requests
 from dotenv import load_dotenv
 import google.generativeai as genai
 from streamlit_extras.let_it_rain import rain
+import random
 
 # ========== CONFIG ========== #
 load_dotenv()
@@ -31,32 +30,31 @@ def send_whatsapp_message(phone_number, message):
     response = requests.post(url, data=payload)
     return response.json()
 
-# ========== USER DATA ========== #
+# ========== USER DATA (Updated with 50 Male + 50 Female Names) ========== #
+male_names = [
+    "Ali", "Zavian", "Maaz", "Shaheer", "Taha", "Aahil", "Arham", "Uzair", "Zohair", "Rehan",
+    "Faizan", "Bilal", "Hamza", "Sameer", "Saad", "Adnan", "Farhan", "Kashan", "Ibrahim", "Osama",
+    "Zeeshan", "Rizwan", "Waleed", "Talha", "Asad", "Daniyal", "Junaid", "Shayan", "Hassan", "Noman",
+    "Ammar", "Ahmad", "Adeel", "Ahsan", "Rayyan", "Faisal", "Haris", "Salman", "Tariq", "Qasim",
+    "Shoaib", "Imran", "Nashit", "Rameez", "Yasir", "Usman", "Waqas", "Zubair", "Nouman", "Kamran"
+]
+
+female_names = [
+    "Alveena", "Ishal", "Areeba", "Yumna", "Rania", "Eshal", "Aleha", "Faryal", "Sehrish", "Mahira",
+    "Zoya", "Minahil", "Ayesha", "Laiba", "Fatima", "Hina", "Komal", "Neha", "Mehwish", "Anum",
+    "Sidra", "Maham", "Iqra", "Kinza", "Nimra", "Lubna", "Uzma", "Bushra", "Saba", "Noreen",
+    "Rabia", "Afshan", "Tabinda", "Aneeqa", "Sania", "Shiza", "Samreen", "Beenish", "Sahar", "Hira",
+    "Sadia", "Kiran", "Ghazala", "Fakhra", "Dua", "Wajiha", "Tahira", "Shumaila", "Khadija", "Humaira"
+]
+
 users = [
-    {"name": "Ali", "age": 22, "gender": "male"},
-    {"name": "Zavian", "age": 25, "gender": "male"},
-    {"name": "Maaz", "age": 24, "gender": "male"},
-    {"name": "Shaheer", "age": 28, "gender": "male"},
-    {"name": "Taha", "age": 23, "gender": "male"},
-    {"name": "Aahil", "age": 21, "gender": "male"},
-    {"name": "Arham", "age": 26, "gender": "male"},
-    {"name": "Uzair", "age": 24, "gender": "male"},
-    {"name": "Zohair", "age": 29, "gender": "male"},
-    {"name": "Ali", "age": 25, "gender": "male"},
-    {"name": "Alveena", "age": 23, "gender": "female"},
-    {"name": "Ishal", "age": 20, "gender": "female"},
-    {"name": "Areeba", "age": 29, "gender": "female"},
-    {"name": "Yumna", "age": 26, "gender": "female"},
-    {"name": "Rania", "age": 25, "gender": "female"},
-    {"name": "Eshal", "age": 22, "gender": "female"},
-    {"name": "Aleha", "age": 27, "gender": "female"},
-    {"name": "Faryal", "age": 24, "gender": "female"},
-    {"name": "Sehrish", "age": 28, "gender": "female"},
-    {"name": "Mahira", "age": 23, "gender": "female"},
+    {"name": name, "age": random.randint(20, 30), "gender": "male"} for name in male_names
+] + [
+    {"name": name, "age": random.randint(20, 30), "gender": "female"} for name in female_names
 ]
 
 # ========== STREAMLIT UI ========== #
-st.set_page_config(page_title="💍Alishba Marriage Bureau", layout="centered")
+st.set_page_config(page_title="💍 Marriage Bureau", layout="centered")
 
 # ========== Custom CSS & Banner ========== #
 st.markdown("""
@@ -109,14 +107,14 @@ st.markdown("""
     <div class="banner">
         <img src='https://tse1.mm.bing.net/th/id/OIP.XSegwM_A-Vy6pAGa6GMP8gHaK_?r=0&rs=1&pid=ImgDetMain&o=7&rm=3' alt="Marriage Bureau Banner" />
     </div>
-    <div class="center-title">💍Alishba Marriage Bureau💍 </div>
+    <div class="center-title">💍Marriage Bureau💍 </div>
 """, unsafe_allow_html=True)
 
 # Rain Effect
 rain(emoji="❤️", font_size=20, falling_speed=5, animation_length="infinite")
 
 # ========== Form ========== #
-st.markdown("### 🗘️ Fill your details to find a perfect match:")
+st.markdown("### 🖘️ Fill your details to find a perfect match:")
 
 col1, col2 = st.columns(2)
 with col1:
@@ -124,7 +122,7 @@ with col1:
     age = st.number_input("Your Age 🎂", min_value=18, max_value=100, step=1)
 with col2:
     gender = st.selectbox("Your Gender 🛋", ["male", "female"])
-    phone = st.text_input("WhatsApp Number 📱 (e.g. +92...)")
+    phone = st.text_input("WhatsApp Number 📱 (e.g.03...)")
 
 min_age = st.slider("Minimum age for your match 🎯", 18, 40, 24)
 
@@ -134,16 +132,16 @@ if st.button("🔍 Find My Match"):
 
         if matches:
             match = matches[0]
-            prompt = f"{name} ({age}) ko {min_age}+ ki {'ladki' if gender == 'male' else 'ladka'} ka rishta chahiye. Mil gaya match: {match['name']} ({match['age']}). Thoda romantic aur narm lehja likho."
+            prompt = f"{name} ({age}) ko {min_age}+ saal ki {'ladki' if gender == 'male' else 'ladka'} ka rishta chahiye. Match mila: {match['name']} ({match['age']}). Sirf Roman Urdu me likho. Hindi bilkul mat likhna. Paighaam romantic aur narm lehje me ho."
             ai_response = ask_gemini(prompt)
 
-            final_message = f"💘 Rishta Mil Gaya!\n{name} ({age}) ne dil se dhoonda aur mila: {match['name']} ({match['age']})\n\n📩 Paighaam-e-Mohabbat: {ai_response}\n\n✨ Mirage Bureau – Jahan dil milte hain."
+            final_message = f"💘 Rishta Mil Gaya!\n{name} ({age}) ne dil se dhoonda aur mila: {match['name']} ({match['age']})\n\n📬 Paighaam-e-Mohabbat: {ai_response}\n\n✨ Marriage Bureau – Jahan dil milte hain."
 
             st.success("🎯 Match Found!")
             st.markdown(f"**✨ AI Suggestion:** {ai_response}")
 
             whatsapp_response = send_whatsapp_message(phone, final_message)
-            st.info(f"📩 WhatsApp Sent: {whatsapp_response}")
+            st.info(f"📬 WhatsApp Sent: {whatsapp_response}")
         else:
             st.warning("😢 Sorry, koi suitable match nahi mila.")
     else:
