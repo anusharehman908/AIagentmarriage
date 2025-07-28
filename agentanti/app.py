@@ -109,7 +109,7 @@ st.markdown("""
     <div class="banner">
         <img src='https://tse1.mm.bing.net/th/id/OIP.XSegwM_A-Vy6pAGa6GMP8gHaK_?r=0&rs=1&pid=ImgDetMain&o=7&rm=3' alt="Marriage Bureau Banner" />
     </div>
-    <div class="center-title">💍Alishba RehmanMarriage Bureau💍 </div>
+    <div class="center-title">💍Alishba Marriage Bureau💍 </div>
 """, unsafe_allow_html=True)
 
 # Rain Effect
