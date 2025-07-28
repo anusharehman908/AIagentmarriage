@@ -1,3 +1,13 @@
+components.html(
+    """
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1314268638194293"
+     crossorigin="anonymous"></script>
+    """,
+    height=0
+)
+
+
+
 import streamlit as st
 import os
 import requests
