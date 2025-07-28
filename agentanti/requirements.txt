@@ -1,6 +1,5 @@
 streamlit
+streamlit-extras
 python-dotenv
 requests
 google-generativeai
-streamlit
-streamlit-extras
