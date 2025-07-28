@@ -1,9 +1,13 @@
+import streamlit as st
+import streamlit.components.v1 as components
+
+# Inject AdSense script
 components.html(
     """
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1314268638194293"
      crossorigin="anonymous"></script>
     """,
-    height=0
+    height=0  # invisible
 )
 
 
@@ -16,7 +20,6 @@ import google.generativeai as genai
 from streamlit_extras.let_it_rain import rain
 import random
 
-# ========== CONFIG ========== #
 load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 ULTRAMSG_INSTANCE_ID = os.getenv("ULTRAMSG_INSTANCE_ID")
@@ -156,6 +159,9 @@ if st.button("🔍 Find My Match"):
             st.warning("😢 Sorry, koi suitable match nahi mila.")
     else:
         st.error("⚠️ Please fill in all the fields!")
+
+
+
 
 
 
