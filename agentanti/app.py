@@ -4,7 +4,7 @@ import os
 import requests
 from dotenv import load_dotenv
 import google.generativeai as genai
-# from streamlit_extras.let_it_rain import rain
+from streamlit_extras.let_it_rain import rain
 
 # ========== CONFIG ========== #
 load_dotenv()
