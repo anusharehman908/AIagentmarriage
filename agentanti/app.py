@@ -60,7 +60,7 @@ users = [{"name": name, "age": random.randint(20, 30), "gender": "male"} for nam
         [{"name": name, "age": random.randint(20, 30), "gender": "female"} for name in female_names]
 
 # ========== UI SETUP ========== #
-st.set_page_config(page_title="💍 Marriage Bureau", layout="centered")
+st.set_page_config(page_title="💍 alishba Marriage Bureau", layout="centered")
 
 st.markdown("""
     <style>
@@ -105,7 +105,7 @@ st.markdown("""
     <div class="banner">
         <img src='https://tse1.mm.bing.net/th/id/OIP.XSegwM_A-Vy6pAGa6GMP8gHaK_?r=0&rs=1&pid=ImgDetMain&o=7&rm=3' alt="Marriage Bureau Banner" />
     </div>
-    <div class="center-title">💍Marriage Bureau💍 </div>
+    <div class="center-title">💍Alishba Marriage Bureau💍 </div>
 """, unsafe_allow_html=True)
 
 rain(emoji="❤️", font_size=20, falling_speed=5, animation_length="infinite")
