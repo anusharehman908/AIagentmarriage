@@ -145,7 +145,7 @@ if st.button("🔍 Find My Match"):
 
         if matches:
             match = matches[0]
-            prompt = f"{name} ({age}) ko {min_age}+ saal ki {'ladki' if gender == 'male' else 'ladka'} ka rishta chahiye. Match mila: {match['name']} ({match['age']}). Sirf Roman Urdu me likho. Hindi bilkul mat likhna. Paighaam romantic aur narm lehje me ho."
+prompt = f"{name} ({age}) ko {min_age}+ saal ki {'ladki' if gender == 'male' else 'ladka'} ka rishta chahiye. Match mila: {match['name']} ({match['age']}). Roman Urdu mein sirf 2-3 line ka short,roman me or koi galat bat nahi karni h  respectful aur halka romantic paighaam likho. Zyada personal ya deep mat ho. Hindi bilkul nahi chahiye."
             ai_response = ask_gemini(prompt)
 
             final_message = f"💘 Rishta Mil Gaya!\n{name} ({age}) ne dil se dhoonda aur mila: {match['name']} ({match['age']})\n\n📬 Paighaam-e-Mohabbat: {ai_response}\n\n✨ Marriage Bureau – Jahan dil milte hain."
