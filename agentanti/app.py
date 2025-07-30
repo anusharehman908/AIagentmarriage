@@ -60,7 +60,7 @@ users = [{"name": name, "age": random.randint(20, 30), "gender": "male"} for nam
         [{"name": name, "age": random.randint(20, 30), "gender": "female"} for name in female_names]
 
 # ========== UI SETUP ========== #
-st.set_page_config(page_title="💍 alishba Marriage Bureau", layout="centered")
+st.set_page_config(page_title="💍Marriage Bureau", layout="centered")
 
 st.markdown("""
     <style>
